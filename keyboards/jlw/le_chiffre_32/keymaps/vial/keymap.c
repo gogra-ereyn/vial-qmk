@@ -4,9 +4,6 @@
 #include QMK_KEYBOARD_H
 #include "process_combo.h"
 
-#define ONESHOT_TAP_TOGGLE 3
-#define ONESHOT_TIMEOUT 5000
-
 enum custom_keycodes
 {
     SMTD_KEYCODES_BEGIN = SAFE_RANGE,
@@ -43,7 +40,7 @@ const int _SYM = 1;
 const int _NUM = 2;
 
 enum combos {
-  JK_ESC,
+ // JK_ESC,
   CV_LCTL,
   NM_RCTL,
   ZX_LGUI,
@@ -52,13 +49,13 @@ enum combos {
 
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
-const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+//const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
 const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM nm_combo[] = {KC_N, KC_M, COMBO_END};
 const uint16_t PROGMEM zx_combo[] = {KC_Z, KC_X, COMBO_END};
 
 combo_t key_combos[] = {
-  COMBO(jk_combo, KC_ESC),     // JK_ESC
+  //COMBO(jk_combo, KC_ESC),     // JK_ESC
   COMBO(cv_combo, OSM(KC_LCTL)), // CV_LCTL
   COMBO(nm_combo, OSM(KC_RCTL)), // NM_RCTL
   COMBO(zx_combo, OSM(KC_LGUI))  // ZX_LGUI
@@ -69,25 +66,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,         QK_BOOT,           KC_Y,    KC_U,    KC_I,     KC_O,          KC_P,
         CKC_A,   CKC_S,   CKC_D,   CKC_F,   KC_G,                            KC_H,    CKC_J,   CKC_K,    CKC_L,         KC_SCLN,
         KC_Z,    KC_X,    KC_C,    KC_V,    OSM(KC_LALT),                    KC_B,    KC_N,    KC_M,     OSM(KC_RALT),  KC_RGUI,
-                                    OSM(KC_LSFT), OSM(KC_LSFT),OSL(1),                            KC_SPC,   OSL(2),OSL(2)
+                                    OSM(KC_LSFT), OSM(KC_LSFT), OSL(1),                            KC_SPC,   OSL(2), OSL(2)
     ),
     [1] = LAYOUT_3thumb(
         LSFT(KC_EQUAL), LSFT(KC_7),     KC_LBRC,      KC_RBRC,      KC_SLSH,       KC_NO,            KC_BSLS,       KC_SCLN,       LSFT(KC_SCLN), LSFT(KC_4),             KC_BSPC,
         KC_MINUS,       LSFT(KC_MINUS), LSFT(KC_LBRC), LSFT(KC_RBRC), KC_EQUAL,                         LSFT(KC_GRAVE),  KC_COMM,        KC_DOT,          LSFT(KC_5),     LSFT(KC_6),
         LSFT(KC_3),     LSFT(KC_2),     LSFT(KC_9),       LSFT(KC_0),       LSFT(KC_1),                         LSFT(KC_BSLS), KC_QUOTE, LSFT(KC_QUOTE),  KC_GRAVE,       KC_TRNS,
-                                                      _______,KC_TRNS,          KC_TRNS,                          KC_TRNS,         KC_TRNS, _______
+                                                      KC_TRNS,KC_TRNS,          KC_TRNS,                          KC_TRNS,         KC_TRNS, KC_TRNS
     ),
     [2] = LAYOUT_3thumb(
         KC_ESC,         LCTL(LALT(KC_DEL)),           KC_TRNS,             LSFT(KC_8), KC_F11,             KC_0,                     KC_SCLN,       KC_0,            KC_1,            KC_2,           KC_BSPC,
         KC_TAB,         KC_LEFT,        KC_DOWN,             KC_UP,             KC_RGHT,                         KC_DOT,          KC_3,            KC_4,            KC_5,           KC_6,
         KC_LCTL,        KC_1,           KC_ESC,             KC_TAB,             LSFT(KC_8),                        KC_COMM,        KC_7,            KC_8,            KC_9,           KC_ENTER,
-                                                          _______,KC_TRNS,          KC_TRNS,                          KC_TRNS,         KC_TRNS,_______
+                                                          _______,KC_TRNS,          KC_TRNS,                          KC_TRNS,         KC_TRNS,KC_TRNS
     ),
     [3] = LAYOUT_3thumb(
        LGUI(LSFT(KC_Q)),      LGUI(KC_W),           LGUI(KC_E),                LGUI(KC_R),     LGUI(KC_T),        KC_0,             LGUI(KC_Y),          LGUI(KC_0),            LGUI(KC_1),            LGUI(KC_2),            KC_BSPC,
         LGUI(KC_D),            LGUI(KC_LEFT),        LGUI(KC_DOWN),             LGUI(KC_UP),    LGUI(KC_RGHT),                      LGUI(KC_H),          LGUI(KC_3),            LGUI(KC_4),            LGUI(KC_5),           LGUI(KC_6),
         KC_TRNS,               KC_TRNS,              LSFT(LGUI(KC_C)),             LGUI(KC_V),        KC_TRNS,                            LGUI(LSFT(KC_S)),       LGUI(KC_7),            LGUI(KC_8),            LGUI(KC_9),           KC_TRNS,
-                                                                                _______,KC_TRNS,        KC_TRNS,                            LGUI(KC_SPC),        KC_TRNS,_______
+                                                                                _______,KC_TRNS,        KC_TRNS,                            LGUI(KC_SPC),        KC_TRNS,KC_TRNS
     )
 };
 
@@ -130,9 +127,8 @@ const uint8_t PROGMEM layer_colors[][3] = {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-    if (!process_smtd(keycode, record)){
+    if (!process_smtd(keycode, record))
         return false;
-    }
     return true;
 }
 
