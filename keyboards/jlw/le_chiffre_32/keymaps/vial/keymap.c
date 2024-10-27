@@ -2,18 +2,10 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
+#include "process_combo.h"
 
 #define ONESHOT_TAP_TOGGLE 3
 #define ONESHOT_TIMEOUT 5000
-
-#define HM_A	LGUI_T(KC_A)
-#define HM_R	LALT_T(KC_R)
-#define HM_S	LCTL_T(KC_S)
-
-#define HM_E	RCTL_T(KC_E)
-#define HM_I	LALT_T(KC_I)
-#define HM_O	LGUI_T(KC_O)
-
 
 enum custom_keycodes
 {
@@ -35,20 +27,42 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count)
 {
     switch (keycode) {
         // L
-        SMTD_MT(CKC_A, KC_A, KC_LEFT_GUI)
-        SMTD_MT(CKC_S, KC_S, KC_LEFT_ALT)
-        SMTD_MT(CKC_D, KC_D, KC_LEFT_CTRL)
+        SMTD_MT(CKC_A, KC_A, KC_LGUI)
+        SMTD_MT(CKC_S, KC_S, KC_LALT)
+        SMTD_MT(CKC_D, KC_D, KC_LCTL)
         SMTD_MT(CKC_F, KC_F, KC_LSFT)
         // R
-        SMTD_MT(CKC_J, KC_A, KC_LEFT_GUI)
-        SMTD_MT(CKC_K, KC_S, KC_LEFT_ALT)
-        SMTD_MT(CKC_L, KC_D, KC_LEFT_CTRL)
+        SMTD_MT(CKC_J, KC_J, KC_RSFT)
+        SMTD_MT(CKC_K, KC_K, KC_RCTL)
+        SMTD_MT(CKC_L, KC_L, KC_RALT)
     }
 }
 
 const int _BASE = 0;
 const int _SYM = 1;
 const int _NUM = 2;
+
+enum combos {
+  JK_ESC,
+  CV_LCTL,
+  NM_RCTL,
+  ZX_LGUI,
+  COMBO_LENGTH
+};
+
+uint16_t COMBO_LEN = COMBO_LENGTH;
+
+const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
+const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM nm_combo[] = {KC_N, KC_M, COMBO_END};
+const uint16_t PROGMEM zx_combo[] = {KC_Z, KC_X, COMBO_END};
+
+combo_t key_combos[] = {
+  COMBO(jk_combo, KC_ESC),     // JK_ESC
+  COMBO(cv_combo, OSM(KC_LCTL)), // CV_LCTL
+  COMBO(nm_combo, OSM(KC_RCTL)), // NM_RCTL
+  COMBO(zx_combo, OSM(KC_LGUI))  // ZX_LGUI
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT(
@@ -64,15 +78,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                       KC_TRNS,          KC_TRNS,                          KC_TRNS,         KC_TRNS
     ),
     [2] = LAYOUT(
-        KC_ESC,         LCTL(LALT(KC_DEL)),           KC_TRNS,             LSFT(KC_8), KC_F11             KC_0,           KC_NO,            KC_SCLN,       KC_0,            KC_1,            KC_2,           KC_BSPC,
+        KC_ESC,         LCTL(LALT(KC_DEL)),           KC_TRNS,             LSFT(KC_8), KC_F11,             KC_0,                     KC_SCLN,       KC_0,            KC_1,            KC_2,           KC_BSPC,
         KC_TAB,         KC_LEFT,        KC_DOWN,             KC_UP,             KC_RGHT,                         KC_DOT,          KC_3,            KC_4,            KC_5,           KC_6,
         KC_LCTL,        KC_1,           KC_ESC,             KC_TAB,             LSFT(KC_8),                        KC_COMM,        KC_7,            KC_8,            KC_9,           KC_ENTER,
                                                           KC_TRNS,          KC_TRNS,                          KC_TRNS,         KC_TRNS
     ),
     [3] = LAYOUT(
-        LGUI(LSFT(KC_Q)),      LGUI(KC_W),           LGUI(KC_E),                LGUI(KC_R),     LGUI(KC_T)        KC_0,             LGUI(KC_Y),          LGUI(KC_0),            LGUI(KC_1),            LGUI(KC_2),            KC_BSPC,
+       LGUI(LSFT(KC_Q)),      LGUI(KC_W),           LGUI(KC_E),                LGUI(KC_R),     LGUI(KC_T),        KC_0,             LGUI(KC_Y),          LGUI(KC_0),            LGUI(KC_1),            LGUI(KC_2),            KC_BSPC,
         LGUI(KC_D),            LGUI(KC_LEFT),        LGUI(KC_DOWN),             LGUI(KC_UP),    LGUI(KC_RGHT),                      LGUI(KC_H),          LGUI(KC_3),            LGUI(KC_4),            LGUI(KC_5),           LGUI(KC_6),
-        KC_TRNS,               KC_TRNS,              LSFT(LGUI(C)),             LGUI(V),        KC_TRNS,                            LGUI(LSFT(S)),       LGUI(KC_7),            LGUI(KC_8),            LGUI(KC_9),           KC_TRNS,
+        KC_TRNS,               KC_TRNS,              LSFT(LGUI(KC_C)),             LGUI(KC_V),        KC_TRNS,                            LGUI(LSFT(KC_S)),       LGUI(KC_7),            LGUI(KC_8),            LGUI(KC_9),           KC_TRNS,
                                                                                 KC_TRNS,        KC_TRNS,                            LGUI(KC_SPC),        KC_TRNS
     )
 };
@@ -85,16 +99,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [2] =   { ENCODER_CCW_CW(_______, _______) },
     [3] =   { ENCODER_CCW_CW(_______, _______) }
 };
-
-// Combos disabled for Vial
-#ifndef VIAL_ENABLE
-    const uint16_t PROGMEM combo_esc[] = {KC_Q, KC_W,    COMBO_END};
-    const uint16_t PROGMEM combo_del[] = {KC_Y, KC_QUOT, COMBO_END};
-    combo_t key_combos[] = {
-        COMBO(combo_esc, KC_ESC),
-        COMBO(combo_del, KC_DEL),
-    };
-#endif
 
 // RGB settings for indicator lights
 // Layer and Mods indicator
