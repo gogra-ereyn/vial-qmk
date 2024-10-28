@@ -7,7 +7,6 @@
 enum custom_keycodes
 {
     SMTD_KEYCODES_BEGIN = SAFE_RANGE,
-    CKC_A,
     CKC_S,
     CKC_D,
     CKC_F,
@@ -24,7 +23,6 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count)
 {
     switch (keycode) {
         // L
-        SMTD_MT(CKC_A, KC_A, KC_LGUI)
         SMTD_MT(CKC_S, KC_S, KC_LALT)
         SMTD_MT(CKC_D, KC_D, KC_LCTL)
         SMTD_MT(CKC_F, KC_F, KC_LSFT)
@@ -61,7 +59,7 @@ combo_t key_combos[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_3thumb(
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,         TO(0),           KC_Y,    KC_U,    KC_I,     KC_O,          KC_P,
-        CKC_A,   CKC_S,   CKC_D,   CKC_F,   KC_G,                            KC_H,    CKC_J,   CKC_K,    CKC_L,         KC_ENTER,
+        KC_A,   CKC_S,   CKC_D,   CKC_F,   KC_G,                            KC_H,    CKC_J,   CKC_K,    CKC_L,         KC_ENTER,
         KC_Z,    KC_X,    KC_C,    KC_V,    KC_ESC,                    KC_B,    KC_N,    KC_M,     KC_ESC,  OSL(3),
                                     OSM(MOD_LSFT), OSM(MOD_LSFT), OSL(1),                            KC_SPC,   OSL(2), OSL(2)
     ),
@@ -81,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [3] = LAYOUT_3thumb(
        LGUI(LSFT(KC_Q)),      LGUI(KC_S),           LGUI(KC_E),                LGUI(KC_R),     LGUI(KC_T),        KC_TRNS,             LGUI(KC_Y),          LGUI(KC_0),            LGUI(KC_1),            LGUI(KC_2),            KC_BSPC,
         LGUI(KC_D),            LGUI(KC_LEFT),        LGUI(KC_DOWN),             LGUI(KC_UP),    LGUI(KC_RGHT),                      LGUI(KC_H),          LGUI(KC_3),            LGUI(KC_4),            LGUI(KC_5),           LGUI(KC_6),
-        KC_TRNS,               KC_TRNS,              LSFT(LGUI(KC_C)),             LGUI(KC_V),        KC_TRNS,                            LGUI(LSFT(KC_S)),       LGUI(KC_7),            LGUI(KC_8),            LGUI(KC_9),           KC_TRNS,
+        QK_BOOT,               KC_TRNS,              LSFT(LGUI(KC_C)),             LGUI(KC_V),        KC_TRNS,                            LGUI(LSFT(KC_S)),       LGUI(KC_7),            LGUI(KC_8),            LGUI(KC_9),           KC_TRNS,
                                                                                 KC_TRNS,KC_TRNS,        KC_TRNS,                            LGUI(KC_SPC),        KC_TRNS,KC_TRNS
     )
 };
@@ -90,8 +88,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // Encoder Map
 const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
     [0] =   { ENCODER_CCW_CW(KC_VOLU, KC_VOLD) },
-    [1] =   { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
-    [2] =   { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) },
+    [1] =   { ENCODER_CCW_CW(RGB_TOG, RGB_TOG) },
+    [2] =   { ENCODER_CCW_CW(RGB_TOG, RGB_TOG) },
     [3] =   { ENCODER_CCW_CW(KC_TRNS, KC_TRNS) }
 };
 
