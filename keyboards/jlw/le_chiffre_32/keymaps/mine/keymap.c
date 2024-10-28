@@ -13,7 +13,6 @@ enum custom_keycodes
     CKC_J,
     CKC_K,
     CKC_L,
-    CKC_EN,
     SMTD_KEYCODES_END,
 };
 
