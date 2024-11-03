@@ -13,6 +13,7 @@ enum custom_keycodes
     CKC_J,
     CKC_K,
     CKC_L,
+    CKC_V,
     SMTD_KEYCODES_END,
 };
 
@@ -21,14 +22,18 @@ enum custom_keycodes
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count)
 {
     switch (keycode) {
+        // HRM
         // L
         SMTD_MT(CKC_S, KC_S, KC_LALT)
-        SMTD_MT(CKC_D, KC_D, KC_LCTL)
+        SMTD_MTE(CKC_D, KC_D, KC_LCTL)
         SMTD_MT(CKC_F, KC_F, KC_LSFT)
         // R
         SMTD_MT(CKC_J, KC_J, KC_RSFT)
-        SMTD_MT(CKC_K, KC_K, KC_RCTL)
+        SMTD_MTE(CKC_K, KC_K, KC_RCTL)
         SMTD_MT(CKC_L, KC_L, KC_RALT)
+
+        // Layers
+        SMTD_LT(CKC_V, KC_V, 2)
     }
 }
 
@@ -59,8 +64,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_3thumb(
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,         TO(0),           KC_Y,    KC_U,    KC_I,     KC_O,          KC_P,
         KC_A,   CKC_S,   CKC_D,   CKC_F,   KC_G,                            KC_H,    CKC_J,   CKC_K,    CKC_L,         KC_ENTER,
-        KC_Z,    KC_X,    KC_C,    KC_V,    KC_ESC,                    KC_B,    KC_N,    KC_M,     KC_ESC,  OSL(3),
-                                    OSM(MOD_LSFT), OSM(MOD_LSFT), OSL(1),                            KC_SPC,   OSL(2), OSL(2)
+        KC_Z,    KC_X,    KC_C,    CKC_V,    KC_ESC,                          KC_B,    KC_N,    KC_M,     KC_ESC,  OSL(3),
+                OSM(MOD_LSFT), OSM(MOD_LSFT), OSL(1),                            KC_SPC,   OSL(2), OSL(2)
     ),
     [1] = LAYOUT_3thumb(
         LSFT(KC_EQUAL), LSFT(KC_7),     KC_LBRC,      KC_RBRC,      KC_SLSH,       KC_TRNS,            KC_BSLS,       KC_SCLN,       LSFT(KC_SCLN), LSFT(KC_4),             KC_BSPC,
@@ -72,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [2] = LAYOUT_3thumb(
         KC_ESC,         LCTL(LALT(KC_DEL)),           KC_TRNS,             LSFT(KC_8), KC_F11,             KC_TRNS,                     KC_SCLN,       KC_0,            KC_1,            KC_2,           KC_BSPC,
         KC_TAB,         KC_LEFT,        KC_DOWN,             KC_UP,             KC_RGHT,                         KC_DOT,          KC_3,            KC_4,            KC_5,           KC_6,
-        OSM(KC_RGUI),        KC_TRNS,           KC_ESC,             KC_TAB,             LSFT(KC_8),                        KC_COMM,        KC_7,            KC_8,            KC_9,           KC_TRNS,
+        OSM(KC_LGUI),        KC_TRNS,           KC_ESC,             KC_TAB,             LSFT(KC_8),                        KC_COMM,        KC_7,            KC_8,            KC_9,           KC_TRNS,
                                                           KC_TRNS,KC_TRNS,          KC_TRNS,                          KC_TRNS,         KC_TRNS,KC_TRNS
     ),
     [3] = LAYOUT_3thumb(
