@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, OSM(MOD_LSFT), MO(1),                          KC_SPC, MO(2),   KC_LGUI
 ),
 [1] = LAYOUT(
-    LSFT(KC_EQUAL),   LSFT(KC_7),       KC_LBRC,         KC_RBRC,        KC_SLSH,            KC_BSLS,         KC_SCLN,        LSFT(KC_SCLN),   LSFT(KC_4),     KC_P,
+    LSFT(KC_EQUAL),   LSFT(KC_7),       KC_LBRC,         KC_RBRC,        KC_SLSH,            KC_BSLS,         KC_SCLN,        LSFT(KC_SCLN),   LSFT(KC_4),     KC_BSPC,
     KC_MINUS,         LSFT(KC_MINUS),   LSFT(KC_LBRC),   LSFT(KC_RBRC),  KC_EQUAL,           LSFT(KC_GRAVE),  KC_COMM,        KC_DOT,          LSFT(KC_5),     LSFT(KC_6),
     LSFT(KC_3),       LSFT(KC_2),       LSFT(KC_9),      LSFT(KC_0),     LSFT(KC_1),         LSFT(KC_BSLS),   KC_QUOTE,       LSFT(KC_QUOTE),  KC_GRAVE,       KC_TRNS,
     KC_TRNS,          KC_TRNS,          KC_TRNS,                                                                              KC_TRNS,         KC_TRNS,        KC_TRNS
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [4] = LAYOUT(
     KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,  KC_U,   KC_I,   KC_O,     KC_P,
     KC_A,   KC_S,   KC_D,   KC_F,   KC_G,   KC_H,  KC_J,   KC_K,   KC_L,    KC_ENT,
-    KC_Z,   KC_X,   KC_C,   KC_V,   TO(0),   KC_B,  KC_N,   KC_M,   KC_COMM,  KC_DOT,
+    KC_Z,   KC_X,   KC_C,   KC_V,   TO(0),   KC_B,  KC_N,   KC_M,   MO(2),  OSL(3),
     KC_LCTL, OSM(MOD_LSFT), MO(1),                          KC_SPC, MO(2),   KC_LGUI
 ),
 };
