@@ -14,6 +14,7 @@ enum custom_keycodes
     CKC_K,
     CKC_L,
     CKC_V,
+    VM_ESC,
     SMTD_KEYCODES_END,
 };
 
@@ -64,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_3thumb(
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,         TO(0),           KC_Y,    KC_U,    KC_I,     KC_O,          KC_P,
         KC_A,   CKC_S,   CKC_D,   CKC_F,    KC_G,                            KC_H,    CKC_J,   CKC_K,    CKC_L,         KC_ENTER,
-        KC_Z,    KC_X,    KC_C,    CKC_V,   KC_COMM,                          KC_B,    KC_N,    KC_M,     MO(2),  OSL(3),
+        KC_Z,    KC_X,    KC_C,    CKC_V,   VM_ESC,                          KC_B,    KC_N,    KC_M,     MO(2),  OSL(3),
                 OSM(MOD_LSFT), OSM(MOD_LSFT), MO(1),                            KC_SPC,   MO(2), MO(2)
     ),
     [1] = LAYOUT_3thumb(
@@ -75,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [2] = LAYOUT_3thumb(
-        KC_ESC,         LCTL(LALT(KC_DEL)),           KC_TRNS,             LSFT(KC_8), KC_F11,             KC_TRNS,                     KC_SCLN,       KC_0,            KC_1,            KC_2,           KC_BSPC,
+        KC_ESC,         LCTL(LALT(KC_DEL)),           RGB_TOG,             LSFT(KC_8), KC_F11,             KC_TRNS,                     KC_SCLN,       KC_0,            KC_1,            KC_2,           KC_BSPC,
         KC_TAB,         KC_LEFT,        KC_DOWN,             KC_UP,             KC_RGHT,                         KC_DOT,          KC_3,            KC_4,            KC_5,           KC_6,
         OSM(KC_LGUI),        KC_TRNS,           KC_ESC,             KC_TAB,             LSFT(KC_8),                        KC_COMM,        KC_7,            KC_8,            KC_9,           KC_TRNS,
                                                           KC_TRNS,KC_TRNS,          KC_TRNS,                          KC_TRNS,         KC_TRNS,KC_TRNS
@@ -136,6 +137,17 @@ const uint8_t PROGMEM layer_colors[][3] = {
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_smtd(keycode, record))
         return false;
+
+    if (keycode == VM_ESC) {
+        if (record->event.pressed) {
+            register_code(KC_LCTL);
+            register_code(KC_LALT);
+            unregister_code(KC_LALT);
+            unregister_code(KC_LCTL);
+        }
+        return false;
+    }
+
     return true;
 }
 

@@ -23,6 +23,7 @@ enum custom_keycodes
     CKC_J,
     CKC_K,
     CKC_L,
+    CKC_V,
     SMTD_KEYCODES_END,
 };
 
@@ -37,6 +38,7 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count)
         SMTD_MT(CKC_J, KC_J, KC_RSFT)
         SMTD_MTE(CKC_K, KC_K, KC_RCTL)
         SMTD_MT(CKC_L, KC_L, KC_RALT)
+        SMTD_LT(CKC_V, KC_V, 2)
     }
 }
 
@@ -64,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = LAYOUT(
     KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,  KC_U,   KC_I,   KC_O,     KC_P,
     KC_A,  CKC_S,  CKC_D,  CKC_F,  KC_G,   KC_H,  CKC_J,  CKC_K,  CKC_L,    KC_ENT,
-    KC_Z,   KC_X,   KC_C,   KC_V,   TO(4),   KC_B,  KC_N,   KC_M,   MO(2),  OSL(3),
+    KC_Z,   KC_X,   KC_C,   CKC_V,   TO(4),   KC_B,  KC_N,   KC_M,   MO(2),  OSL(3),
     KC_LCTL, OSM(MOD_LSFT), MO(1),                          KC_SPC, MO(2),   KC_LGUI
 ),
 [1] = LAYOUT(
@@ -93,6 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LCTL, OSM(MOD_LSFT), MO(1),                          KC_SPC, MO(2),   KC_LGUI
 ),
 };
+
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_smtd(keycode, record)) {
