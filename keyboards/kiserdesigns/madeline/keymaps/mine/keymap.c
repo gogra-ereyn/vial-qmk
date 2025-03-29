@@ -64,9 +64,9 @@ combo_t key_combos[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [0] = LAYOUT(
-    KC_Q,   KC_W,   KC_E,   KC_R,   KC_T,   KC_Y,  KC_U,   KC_I,   KC_O,     KC_P,
+    KC_Q,   KC_W,   KC_E,   KC_R,   KC_SLSH,   KC_Y,  KC_U,   KC_I,   KC_O,     KC_P,
     KC_A,  CKC_S,  CKC_D,  CKC_F,  KC_G,   KC_H,  CKC_J,  CKC_K,  CKC_L,    KC_ENT,
-    KC_Z,   KC_X,   KC_C,   CKC_V,   TO(4),   KC_B,  KC_N,   KC_M,   MO(2),  OSL(3),
+    KC_Z,   KC_X,   KC_C,   CKC_V,   KC_T,   KC_B,  KC_N,   KC_M,   MO(2),  OSL(3),
     KC_LCTL, OSM(MOD_LSFT), MO(1),                          KC_SPC, MO(2),   KC_LGUI
 ),
 [1] = LAYOUT(

@@ -63,9 +63,9 @@ combo_t key_combos[] = {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [0] = LAYOUT_3thumb(
-        KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,         TO(0),           KC_Y,    KC_U,    KC_I,     KC_O,          KC_P,
+        KC_Q,    KC_W,    KC_E,    KC_R,    KC_SLSH,         TO(0),           KC_Y,    KC_U,    KC_I,     KC_O,          KC_P,
         KC_A,   CKC_S,   CKC_D,   CKC_F,    KC_G,                            KC_H,    CKC_J,   CKC_K,    CKC_L,         KC_ENTER,
-        KC_Z,    KC_X,    KC_C,    CKC_V,   VM_ESC,                          KC_B,    KC_N,    KC_M,     MO(2),  OSL(3),
+        KC_Z,    KC_X,    KC_C,    CKC_V,   KC_T,                          KC_B,    KC_N,    KC_M,     MO(2),  OSL(3),
                 OSM(MOD_LSFT), OSM(MOD_LSFT), MO(1),                            KC_SPC,   MO(2), MO(2)
     ),
     [1] = LAYOUT_3thumb(
@@ -82,9 +82,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                           KC_TRNS,KC_TRNS,          KC_TRNS,                          KC_TRNS,         KC_TRNS,KC_TRNS
     ),
     [3] = LAYOUT_3thumb(
-       LGUI(LSFT(KC_Q)),      LGUI(KC_S),           LGUI(KC_E),                LGUI(KC_R),     LGUI(KC_T),        KC_TRNS,             LGUI(KC_Y),          LGUI(KC_0),            LGUI(KC_1),            LGUI(KC_2),            KC_BSPC,
+        LGUI(LSFT(KC_Q)),      LGUI(KC_S),           LGUI(KC_E),                LGUI(KC_R),     LGUI(KC_T),        KC_TRNS,             LGUI(KC_Y),          LGUI(KC_0),            LGUI(KC_1),            LGUI(KC_2),            KC_BSPC,
         LGUI(KC_D),            LGUI(KC_LEFT),        LGUI(KC_DOWN),             LGUI(KC_UP),    LGUI(KC_RGHT),                      LGUI(KC_H),          LGUI(KC_3),            LGUI(KC_4),            LGUI(KC_5),           LGUI(KC_6),
-        QK_BOOT,               LGUI(KC_F),              LSFT(LGUI(KC_C)),             LGUI(KC_V),        KC_TRNS,                            LGUI(LSFT(KC_S)),       LGUI(KC_7),            LGUI(KC_8),            LGUI(KC_9),           KC_TRNS,
+        QK_BOOT,               LGUI(KC_F),           LSFT(LGUI(KC_C)),          LGUI(KC_V),        KC_TRNS,                            LGUI(LSFT(KC_S)),       LGUI(KC_7),            LGUI(KC_8),            LGUI(KC_9),           KC_TRNS,
                                                                                 KC_TRNS,KC_TRNS,        KC_TRNS,                            LGUI(KC_SPC),        KC_TRNS,KC_TRNS
     ),
     [4] = LAYOUT_3thumb(
