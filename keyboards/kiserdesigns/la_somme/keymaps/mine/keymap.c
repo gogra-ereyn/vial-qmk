@@ -56,24 +56,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [1]=LAYOUT(
 
-         LSFT(KC_EQUAL), LSFT(KC_7),     KC_LBRC,      KC_RBRC,      KC_SLSH,                                   KC_BSLS,       KC_SCLN,       LSFT(KC_SCLN), LSFT(KC_4),             KC_BSPC,
-        KC_MINUS,       LSFT(KC_MINUS), LSFT(KC_LBRC), LSFT(KC_RBRC), KC_EQUAL,                                 LSFT(KC_GRAVE),  KC_COMM,        KC_DOT,          LSFT(KC_5),     LSFT(KC_6),
-        LSFT(KC_3),     LSFT(KC_2),     LSFT(KC_9),       LSFT(KC_0),       LSFT(KC_1),                         LSFT(KC_BSLS), KC_QUOTE, LSFT(KC_QUOTE),  KC_GRAVE,       KC_TRNS,
-                                                      KC_TRNS, KC_TRNS,KC_TRNS,          KC_TRNS,                          KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS
+         LSFT(KC_EQUAL), LSFT(KC_7),     KC_LBRC,      KC_RBRC,      KC_SLSH,                                   KC_BSLS,          KC_SCLN,       LSFT(KC_SCLN),     LSFT(KC_4),     KC_BSPC,
+        KC_MINUS,       LSFT(KC_MINUS), LSFT(KC_LBRC), LSFT(KC_RBRC), KC_EQUAL,                                 LSFT(KC_GRAVE),  KC_COMM,        KC_DOT,            LSFT(KC_5),     LSFT(KC_6),
+        LSFT(KC_3),     LSFT(KC_2),     LSFT(KC_9),       LSFT(KC_0),       LSFT(KC_1),                         LSFT(KC_BSLS),   KC_QUOTE,        LSFT(KC_QUOTE),   KC_GRAVE,       KC_TRNS,
+                                                      KC_TRNS, KC_TRNS,KC_TRNS, KC_TRNS,                          KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,                  KC_TRNS
 
     ),
 
   [2]=LAYOUT(
-        KC_TRNS,         LCTL(LALT(KC_DEL)),           RGB_TOG,             LSFT(KC_8), KC_F11,                   KC_SCLN,       KC_0,            KC_1,            KC_2,           KC_BSPC,
-        KC_TAB,         KC_LEFT,        KC_DOWN,             KC_UP,             KC_RGHT,                         KC_DOT,          KC_3,            KC_4,            KC_5,           KC_6,
-        KC_LGUI,        KC_LGUI,           KC_ESC,             KC_TAB,             LSFT(KC_8),                  KC_COMM,        KC_7,            KC_8,            KC_9,           KC_TRNS,
-                                                          KC_TRNS,KC_TRNS,KC_TRNS,          KC_TRNS,                          KC_TRNS,         KC_TRNS,KC_TRNS,KC_TRNS
+        KC_TRNS,         LCTL(LALT(KC_DEL)),           RGB_TOG,             LSFT(KC_8),         KC_F11,                         KC_SCLN,        KC_0,            KC_1,            KC_2,           KC_BSPC,
+        KC_TAB,         KC_LEFT,                       KC_DOWN,             KC_UP,              KC_RGHT,                         KC_DOT,          KC_3,            KC_4,            KC_5,           KC_6,
+        KC_LGUI,        KC_LGUI,                       KC_ESC,              KC_TAB,             LSFT(KC_8),                      KC_COMM,        KC_7,            KC_8,            KC_9,           KC_TRNS,
+                                                          KC_TRNS,KC_TRNS,KC_TRNS,              KC_TRNS,                          KC_TRNS,         KC_TRNS,KC_TRNS,KC_TRNS,                 KC_TRNS
    ),
   [3]=LAYOUT(
-        LGUI(LSFT(KC_Q)),      LGUI(KC_S),           LGUI(KC_E),                LGUI(KC_R),     LGUI(KC_W),        KC_TRNS,             LGUI(KC_Y),          LGUI(KC_0),            LGUI(KC_1),            LGUI(KC_2),            LGUI(KC_P),
+        LGUI(LSFT(KC_Q)),      LGUI(KC_S),           LGUI(KC_E),                LGUI(KC_R),     LGUI(KC_W),                         LGUI(KC_Y),          LGUI(KC_0),            LGUI(KC_1),            LGUI(KC_2),            LGUI(KC_P),
         LGUI(KC_D),            LGUI(KC_LEFT),        LGUI(KC_DOWN),             LGUI(KC_UP),    LGUI(KC_RGHT),                      LGUI(KC_H),          LGUI(KC_3),            LGUI(KC_4),            LGUI(KC_5),           LGUI(KC_6),
         QK_BOOT,               LGUI(KC_F),           LGUI(KC_C),          LGUI(KC_V),        LGUI(KC_T),                            LGUI(LSFT(KC_S)),       LGUI(KC_7),            LGUI(KC_8),            LGUI(KC_9),           KC_TRNS,
-                                                                                KC_TRNS,KC_TRNS,KC_TRNS,        KC_TRNS,                            LGUI(KC_SPC),        KC_TRNS,KC_TRNS,KC_TRNS
+                                                                        KC_TRNS,KC_TRNS,KC_TRNS,KC_TRNS,                            LGUI(KC_SPC),KC_TRNS,KC_TRNS,KC_TRNS,                       KC_TRNS
     ),
 };
 
