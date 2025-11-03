@@ -82,10 +82,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                           KC_TRNS,KC_TRNS,          KC_TRNS,                          KC_TRNS,         KC_TRNS,KC_TRNS
     ),
     [3] = LAYOUT_3thumb(
-        LGUI(LSFT(KC_Q)),      LGUI(KC_S),           LGUI(KC_E),                LGUI(KC_R),     LGUI(KC_W),        KC_TRNS,             LGUI(KC_Y),          LGUI(KC_0),            LGUI(KC_1),            LGUI(KC_2),            LGUI(KC_P),
-        LGUI(KC_D),            LGUI(KC_LEFT),        LGUI(KC_DOWN),             LGUI(KC_UP),    LGUI(KC_RGHT),                      LGUI(KC_H),          LGUI(KC_3),            LGUI(KC_4),            LGUI(KC_5),           LGUI(KC_6),
-        QK_BOOT,               LGUI(KC_F),           LGUI(KC_C),          LGUI(KC_V),        LGUI(KC_T),                            LGUI(LSFT(KC_S)),       LGUI(KC_7),            LGUI(KC_8),            LGUI(KC_9),           KC_TRNS,
-                                                                                KC_TRNS,KC_TRNS,        KC_TRNS,                            LGUI(KC_SPC),        KC_TRNS,KC_TRNS
+        LGUI(LSFT(KC_Q)),      LGUI(KC_S),           LGUI(KC_E),                LGUI(KC_R),     LGUI(KC_W),        KC_TRNS,             LGUI(KC_Y),             LGUI(KC_0),            LGUI(KC_1),            LGUI(KC_2),            LGUI(KC_P),
+        LGUI(KC_D),            LGUI(KC_LEFT),        LGUI(KC_DOWN),             LGUI(KC_UP),    LGUI(KC_RGHT),                          LGUI(KC_H),             LGUI(KC_3),            LGUI(KC_4),            LGUI(KC_5),           LGUI(KC_6),
+        QK_BOOT,               LGUI(KC_F),           LGUI(KC_C),                LGUI(KC_V),     LGUI(KC_T),                             LGUI(LSFT(KC_S)),       LGUI(KC_7),            LGUI(KC_8),            LGUI(KC_9),           KC_TRNS,
+                                                                                KC_TRNS,KC_TRNS,        KC_TRNS,                        LGUI(KC_SPC),           KC_TRNS,KC_TRNS
     ),
     [4] = LAYOUT_3thumb(
         KC_Q,    KC_W,    KC_E,    KC_R,    TO(0),         TO(0),           KC_Y,    KC_U,    KC_I,     KC_O,          KC_P,
