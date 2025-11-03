@@ -23,7 +23,6 @@ enum custom_keycodes
     CKC_K,
     CKC_L,
     CKC_V,
-    VM_ESC,
     SMTD_KEYCODES_END,
 };
 
@@ -51,23 +50,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT(
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_SLSH,            KC_Y,    KC_U,    KC_I,     KC_O,          KC_P,
         KC_A,   CKC_S,   CKC_D,   CKC_F,    KC_G,               KC_H,    CKC_J,   CKC_K,    CKC_L,         KC_ENTER,
-        KC_Z,    KC_X,    KC_C,    CKC_V,   KC_T,                          KC_B,    KC_N,    KC_M,     KC_ESC,  OSL(3),
-             KC_LCTL, OSM(MOD_LSFT), OSM(MOD_LSFT), MO(1),       KC_SPC, MO(2), MO(2), KC_RCTL,        KC_ESC
+        KC_Z,    KC_X,    KC_C,    CKC_V,   KC_T,               KC_B,    KC_N,    KC_M,     KC_ESC,  OSL(3),
+             KC_RGUI, KC_LCTL, OSM(MOD_LSFT), MO(1),      KC_SPC, MO(2), OSM(KC_RSFT), KC_RGUI,        KC_ESC
   ),
   [1]=LAYOUT(
 
-         LSFT(KC_EQUAL), LSFT(KC_7),     KC_LBRC,      KC_RBRC,      KC_SLSH,                                   KC_BSLS,          KC_SCLN,       LSFT(KC_SCLN),     LSFT(KC_4),     KC_BSPC,
+        LSFT(KC_EQUAL), LSFT(KC_7),     KC_LBRC,      KC_RBRC,      KC_SLSH,                                   KC_BSLS,          KC_SCLN,       LSFT(KC_SCLN),     LSFT(KC_4),     KC_BSPC,
         KC_MINUS,       LSFT(KC_MINUS), LSFT(KC_LBRC), LSFT(KC_RBRC), KC_EQUAL,                                 LSFT(KC_GRAVE),  KC_COMM,        KC_DOT,            LSFT(KC_5),     LSFT(KC_6),
         LSFT(KC_3),     LSFT(KC_2),     LSFT(KC_9),       LSFT(KC_0),       LSFT(KC_1),                         LSFT(KC_BSLS),   KC_QUOTE,        LSFT(KC_QUOTE),   KC_GRAVE,       KC_TRNS,
                                                       KC_TRNS, KC_TRNS,KC_TRNS, KC_TRNS,                          KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,                  KC_TRNS
 
     ),
 
+
   [2]=LAYOUT(
         KC_TRNS,         LCTL(LALT(KC_DEL)),           RGB_TOG,             LSFT(KC_8),         KC_F11,                         KC_SCLN,        KC_0,            KC_1,            KC_2,           KC_BSPC,
         KC_TAB,         KC_LEFT,                       KC_DOWN,             KC_UP,              KC_RGHT,                         KC_DOT,          KC_3,            KC_4,            KC_5,           KC_6,
         KC_LGUI,        KC_LGUI,                       KC_ESC,              KC_TAB,             LSFT(KC_8),                      KC_COMM,        KC_7,            KC_8,            KC_9,           KC_TRNS,
-                                                          KC_TRNS,KC_TRNS,KC_TRNS,              KC_TRNS,                          KC_TRNS,         KC_TRNS,KC_TRNS,KC_TRNS,                 KC_TRNS
+                                                          KC_TRNS,KC_TRNS,KC_TRNS,              KC_TRNS,                          KC_TRNS,      KC_TRNS,        KC_TRNS,        KC_TRNS,                         KC_TRNS
    ),
   [3]=LAYOUT(
         LGUI(LSFT(KC_Q)),      LGUI(KC_S),           LGUI(KC_E),                LGUI(KC_R),     LGUI(KC_W),                         LGUI(KC_Y),          LGUI(KC_0),            LGUI(KC_1),            LGUI(KC_2),            LGUI(KC_P),
@@ -91,17 +91,6 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_smtd(keycode, record))
         return false;
-
-    if (keycode == VM_ESC) {
-        if (record->event.pressed) {
-            register_code(KC_LCTL);
-            register_code(KC_LALT);
-            unregister_code(KC_LALT);
-            unregister_code(KC_LCTL);
-        }
-        return false;
-    }
-
     return true;
 }
 
